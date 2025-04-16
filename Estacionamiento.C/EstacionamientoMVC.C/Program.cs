@@ -35,25 +35,16 @@ namespace EstacionamientoMVC.C
             app.Run();
 
 
+            Direccion direccion1 = new Direccion();
+
+            string apellido = direccion1.Persona.Apellido;
+
+            Persona persona1 = new Persona();
+            Cliente cliente = new Cliente();    
+
+            cliente.Direccion = direccion1;
             
 
-            string nombre = "Pedro";
-            string apellido = "Picapiedra";
-
-            Persona persona1 = new Persona() { 
-                Nombre = nombre,
-                Apellido = apellido,
-                CodUnico = 22
-            };
-            
-            
-            persona1.Nombre = nombre;
-            persona1.Apellido = apellido;
-            
-
-            string otroNombre = persona1.Nombre;
-            
-            Console.WriteLine(persona1.Apellido);
 
         }
     }
