@@ -11,6 +11,18 @@ namespace EstacionamientoMVC.C.Data
             
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            #region Muchos a Muchos
+            modelBuilder.Entity<ClienteVehiculo>().HasKey(cv => new { cv.ClienteId,cv.VehiculoId});
+
+            modelBuilder.Entity<ClienteVehiculo>().HasOne(cv => cv.Cliente).WithMany(clt => clt.ClientesVehiculos);
+            modelBuilder.Entity<ClienteVehiculo>().HasOne(cv => cv.Vehiculo).WithMany(veh => veh.ClientesVehiculos);
+
+            #endregion
+        }
 
         public DbSet<Persona> Personas { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
