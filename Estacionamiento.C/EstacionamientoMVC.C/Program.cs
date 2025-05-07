@@ -1,4 +1,9 @@
+using EstacionamientoMVC.C.Data;
 using EstacionamientoMVC.C.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace EstacionamientoMVC.C
 {
@@ -9,6 +14,12 @@ namespace EstacionamientoMVC.C
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddDbContext<MiDb_C>(options => 
+                options.UseInMemoryDatabase("MiDb_C")
+                );
+
+
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
@@ -34,16 +45,7 @@ namespace EstacionamientoMVC.C
 
             app.Run();
 
-
-            Direccion direccion1 = new Direccion();
-
-            string apellido = direccion1.Persona.Apellido;
-
-            Persona persona1 = new Persona();
-            Cliente cliente = new Cliente();    
-
-            cliente.Direccion = direccion1;
-            
+         
 
 
         }

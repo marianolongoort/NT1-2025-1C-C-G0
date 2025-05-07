@@ -33,5 +33,10 @@ namespace EstacionamientoMVC.C.Models
         [Display(Name = "Correo electronico")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+
+        public string NombreCompleto {
+            get { return $"{Apellido}, {Nombre}"; }
+        }
     }
 }
