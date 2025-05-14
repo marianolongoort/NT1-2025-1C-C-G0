@@ -51,7 +51,7 @@ namespace EstacionamientoMVC.C.Controllers
                 Apellido = "Picapiedra",
                 Nombre = "Pedro",
                 DNI = 22333444,
-                Email = "mariano@ort.edu.ar",
+                Email = "pedro@ort.edu.ar",
                 Activo = true,
                 CodigoIdentificacion = "30-22333444-0"
             };
