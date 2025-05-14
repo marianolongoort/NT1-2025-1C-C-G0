@@ -1,20 +1,27 @@
-﻿
+﻿using EstacionamientoMVC.C.Helpers;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EstacionamientoMVC.C.Models
 {
     public class ClienteVehiculo
     {
-        //Prop Relacionales
-        [Key,Column("1")]
+        [Required(ErrorMessage = ErrMsgs.Requerido)]
+        [Key]                
+        [Display(Name = Alias.ClienteId)]
         public int ClienteId { get; set; }
 
-        [Key,Column("2")]
+        [Required(ErrorMessage = ErrMsgs.Requerido)]
+        [Key]        
+        [Display(Name = Alias.VehiculoId)]
         public int VehiculoId { get; set; }
 
-        //Prop Navegacionales
+        [Display(Name = Alias.ClienteId)]
         public Cliente Cliente { get; set; }
+
+        [Display(Name = Alias.VehiculoId)]
         public Vehiculo Vehiculo { get; set; }
+
+        [Display(Name =Alias.ResponsablePrincipal)]
+        public bool ResponsablePrincipal { get; set; }
     }
 }

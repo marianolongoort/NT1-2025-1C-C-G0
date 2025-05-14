@@ -12,17 +12,20 @@ namespace EstacionamientoMVC.C.Controllers
 {
     public class PersonasController : Controller
     {
-        private readonly MiDb_C _context;
+        private readonly MiDb_C _miDb;
 
         public PersonasController(MiDb_C context)
         {
-            _context = context;
+            _miDb = context;
         }
 
         // GET: Personas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Personas.ToListAsync());
+            var personas = await _miDb.Personas.ToListAsync();
+            var direcciones = await _miDb.Direcciones.ToListAsync();
+
+            return View(await _miDb.Personas.ToListAsync());
         }
 
         // GET: Personas/Details/5
@@ -32,9 +35,10 @@ namespace EstacionamientoMVC.C.Controllers
             {
                 return NotFound();
             }
-
-            var persona = await _context.Personas
-                .FirstOrDefaultAsync(m => m.Id == id);
+                        
+            var persona = await _miDb.Personas.FirstOrDefaultAsync(m => m.Id == id);
+                     
+            
             if (persona == null)
             {
                 return NotFound();
@@ -54,12 +58,12 @@ namespace EstacionamientoMVC.C.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,DNI,CodigoIdentificacion,Activo,Email")] Persona persona)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,Foto,DNI,CodigoIdentificacion,Email,Activo")] Persona persona)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(persona);
-                await _context.SaveChangesAsync();
+                _miDb.Add(persona);
+                await _miDb.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(persona);
@@ -73,7 +77,7 @@ namespace EstacionamientoMVC.C.Controllers
                 return NotFound();
             }
 
-            var persona = await _context.Personas.FindAsync(id);
+            var persona = await _miDb.Personas.FindAsync(id);
             if (persona == null)
             {
                 return NotFound();
@@ -86,7 +90,7 @@ namespace EstacionamientoMVC.C.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,DNI,CodigoIdentificacion,Activo,Email")] Persona persona)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Foto,DNI,CodigoIdentificacion,Email,Activo")] Persona persona)
         {
             if (id != persona.Id)
             {
@@ -97,8 +101,8 @@ namespace EstacionamientoMVC.C.Controllers
             {
                 try
                 {
-                    _context.Update(persona);
-                    await _context.SaveChangesAsync();
+                    _miDb.Update(persona);
+                    await _miDb.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -124,7 +128,7 @@ namespace EstacionamientoMVC.C.Controllers
                 return NotFound();
             }
 
-            var persona = await _context.Personas
+            var persona = await _miDb.Personas
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (persona == null)
             {
@@ -139,19 +143,19 @@ namespace EstacionamientoMVC.C.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var persona = await _context.Personas.FindAsync(id);
+            var persona = await _miDb.Personas.FindAsync(id);
             if (persona != null)
             {
-                _context.Personas.Remove(persona);
+                _miDb.Personas.Remove(persona);
             }
 
-            await _context.SaveChangesAsync();
+            await _miDb.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PersonaExists(int id)
         {
-            return _context.Personas.Any(e => e.Id == id);
+            return _miDb.Personas.Any(e => e.Id == id);
         }
     }
 }

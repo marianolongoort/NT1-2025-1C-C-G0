@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ClienteVehiculo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Crear</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehiculo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResponsablePrincipal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vehiculo.Patente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResponsablePrincipal)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {item.ClienteId,item.VehiculoId}) |
+                <a asp-action="Details" asp-route-clienteId="@item.ClienteId" asp-route-vehiculoId="@item.VehiculoId">Detalles</a> |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -46,7 +46,17 @@ namespace EstacionamientoMVC.C.Controllers
         // GET: Clientes/Create
         public IActionResult Create()
         {
-            return View();
+            Cliente cliente = new Cliente()
+            {
+                Apellido = "Picapiedra",
+                Nombre = "Pedro",
+                DNI = 22333444,
+                Email = "mariano@ort.edu.ar",
+                Activo = true,
+                CodigoIdentificacion = "30-22333444-0"
+            };
+
+            return View(cliente);
         }
 
         // POST: Clientes/Create
@@ -54,7 +64,7 @@ namespace EstacionamientoMVC.C.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,DNI,CodigoIdentificacion,Activo,Email")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,Foto,DNI,CodigoIdentificacion,Email,Activo")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +96,7 @@ namespace EstacionamientoMVC.C.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,DNI,CodigoIdentificacion,Activo,Email")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Foto,DNI,CodigoIdentificacion,Email,Activo")] Cliente cliente)
         {
             if (id != cliente.Id)
             {
