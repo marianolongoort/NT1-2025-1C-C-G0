@@ -1,8 +1,163 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Garage BarrioSeguro - Tu Estacionamiento de Confianza";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<style>
+    
+
+    /* Asegúrate de tener FontAwesome o Bootstrap Icons para los íconos */
+</style>
+
+<section class="hero-section">
+    <div class="container">
+        <h1>Garage BarrioSeguro</h1>
+        <p>Tu espacio seguro y confiable en el corazón del barrio. Abierto 24/7.</p>
+        <a href="#contacto" class="btn btn-primary btn-lg btn-hero">Reservar Espacio</a>
+        <a href="#servicios" class="btn btn-outline-light btn-lg btn-hero ms-2">Ver Servicios</a>
+    </div>
+</section>
+
+<section id="sobre-nosotros" class="section-padding">
+    <div class="container">
+        <h2 class="section-title">Quiénes Somos</h2>
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h3>Más que un simple garage</h3>
+                <p class="lead">En Garage BarrioSeguro, entendemos la importancia de tu vehículo. Por eso, ofrecemos más que un simple lugar para estacionar: brindamos tranquilidad, seguridad y un servicio al cliente excepcional.</p>
+                <p>Desde nuestra fundación hace más de 10 años, nos hemos comprometido con la comunidad local, ofreciendo tarifas competitivas y un ambiente cuidado para que dejes tu auto o moto con total confianza. Nuestras instalaciones son monitoreadas constantemente y nuestro personal está siempre dispuesto a ayudarte.</p>
+                <a asp-controller="Home" asp-action="Privacy" class="btn btn-outline-primary">Nuestras politicas</a>
+            </div>
+            <div class="col-lg-6 mt-4 mt-lg-0">
+                <img src="https://wallpapers.com/images/high/expensive-car-parking-lot-garage-u0rofkqiwqm7irky.webp" class="img-fluid rounded shadow" alt="Interior del Garage BarrioSeguro">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="servicios" class="section-padding bg-light">
+    <div class="container">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="row">
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card service-card h-100">
+                    <img src="https://www.arqhys.com/wp-content/uploads/2012/12/Parqueos-En-la-Calle.jpg" class="card-img-top" alt="Estacionamiento por Hora/Día">
+                    <div class="card-body text-center">
+                        <i class="bi bi-clock-history feature-icon"></i> <h5 class="card-title">Estacionamiento por Hora/Día</h5>
+                        <p class="card-text">Ideal para visitas rápidas o estadías cortas. Tarifas flexibles y competitivas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card service-card h-100">
+                    <img src="https://www.telpark.com/wp-content/uploads/2023/03/Parking-Barceloneta-Port-Vell-Barcelona.webp" class="card-img-top" alt="Abonos Mensuales">
+                    <div class="card-body text-center">
+                        <i class="bi bi-calendar-check feature-icon"></i>
+                        <h5 class="card-title">Abonos Mensuales</h5>
+                        <p class="card-text">La solución perfecta para residentes y trabajadores de la zona. Espacio garantizado.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card service-card h-100">
+                    <img src="https://www.lanacion.com.ar/resizer/v2/lavado-de-BS652MZB7JBQ3CGT3CJP6TNVXQ.jpg?auth=b79423526cf1668dd2ac008b5edddf58df5fbd468b1187aae1342c137b527fe3&width=880&height=586&quality=70&smart=true" class="card-img-top" alt="Lavado de Autos">
+                    <div class="card-body text-center">
+                        <i class="bi bi-brightness-alt-high-fill feature-icon"></i>
+                        <h5 class="card-title">Lavado Detallado</h5>
+                        <p class="card-text">Deja tu auto impecable con nuestro servicio de lavado profesional y ecológico.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card service-card h-100">
+                    <img src="https://i0.wp.com/dinamicarg.com/wp-content/uploads/2024/05/foto_3-1-1.jpeg?resize=768%2C512&ssl=1" class="card-img-top" alt="Carga para Eléctricos">
+                    <div class="card-body text-center">
+                        <i class="bi bi-ev-station-fill feature-icon"></i>
+                        <h5 class="card-title">Carga para Eléctricos</h5>
+                        <p class="card-text">Puntos de carga rápida para vehículos eléctricos. Energía limpia para tu movilidad.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card service-card h-100">
+                    <img src="https://www.prosegur.com.ar/dam/jcr:0b0b05ad-bb11-482f-b16d-1aa4df0fa8d9/Card%20vigilancia%202.webp" class="card-img-top" alt="Seguridad 24/7">
+                    <div class="card-body text-center">
+                        <i class="bi bi-shield-lock-fill feature-icon"></i>
+                        <h5 class="card-title">Seguridad 24/7</h5>
+                        <p class="card-text">Vigilancia por cámaras y personal de seguridad para tu total tranquilidad.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card service-card h-100">
+                    <img src="https://commbi.com.ar/wp-content/uploads/2021/04/parking-2478837_1920.jpeg" class="card-img-top" alt="Parking de Bicicletas">
+                    <div class="card-body text-center">
+                        <i class="bi bi-bicycle feature-icon"></i>
+                        <h5 class="card-title">Parking de Bicicletas</h5>
+                        <p class="card-text">Espacio seguro y dedicado para guardar tu bicicleta mientras exploras el barrio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="testimonios" class="section-padding">
+    <div class="container">
+        <h2 class="section-title">Qué Dicen Nuestros Clientes</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card testimonial-card">
+                    <div class="card-body">
+                        <p class="fst-italic">"Excelente servicio y atención. Siempre encuentro lugar y mi auto está seguro. ¡Los recomiendo!"</p>
+                        <footer class="blockquote-footer text-end">Ana Pérez, <cite title="Source Title">Residente del barrio</cite></footer>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card testimonial-card">
+                    <div class="card-body">
+                        <p class="fst-italic">"Uso el abono mensual y es súper conveniente. El personal es muy amable y las instalaciones están impecables."</p>
+                        <footer class="blockquote-footer text-end">Carlos Gómez, <cite title="Source Title">Trabajador de la zona</cite></footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contacto" class="section-padding bg-light">
+    <div class="container">
+        <h2 class="section-title">Encuéntranos Fácilmente</h2>
+        <div class="row">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h4>Garage BarrioSeguro</h4>
+                <p><i class="bi bi-geo-alt-fill"></i> Calle Falsa 123, Barrio Conocido, Ciudad.</p>
+                <p><i class="bi bi-telephone-fill"></i> (011) 4555-5555</p>
+                <p><i class="bi bi-envelope-fill"></i> info@garagebarrioseguro.com</p>
+                <p><i class="bi bi-clock-fill"></i> Horario: Abierto 24 horas, todos los días.</p>
+                <h5 class="mt-4">Síguenos en Redes</h5>
+                <a href="#" class="btn btn-outline-primary btn-sm me-2"><i class="bi bi-facebook"></i> Facebook</a>
+                <a href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-instagram"></i> Instagram</a>
+            </div>
+            <div class="col-lg-6">
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.0167047822776!2d-58.38157098468099!3d-34.60373888045984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacfPZAwMDM0YzM0YmMwYjQ1!2sObelisco!5e0!3m2!1ses-419!2sar!4v1617896000000!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        // Pequeño script para smooth scroll 
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+}

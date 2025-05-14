@@ -45,7 +45,7 @@ namespace EstacionamientoMVC.C.Controllers
 
         public IActionResult Create()
         {
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "Apellido");
+            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NombreCompleto");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace EstacionamientoMVC.C.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "Apellido", telefono.ClienteId);
+            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NombreCompleto", telefono.ClienteId);
             return View(telefono);
         }
 
@@ -75,7 +75,7 @@ namespace EstacionamientoMVC.C.Controllers
             {
                 return NotFound();
             }
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "Apellido", telefono.ClienteId);
+            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NombreCompleto", telefono.ClienteId);
             return View(telefono);
         }
 
@@ -108,7 +108,7 @@ namespace EstacionamientoMVC.C.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "Apellido", telefono.ClienteId);
+            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NombreCompleto", telefono.ClienteId);
             return View(telefono);
         }
 

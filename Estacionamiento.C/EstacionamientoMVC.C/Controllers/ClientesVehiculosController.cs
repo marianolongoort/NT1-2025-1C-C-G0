@@ -51,8 +51,8 @@ namespace EstacionamientoMVC.C.Controllers
         // GET: ClientesVehiculos/Create
         public IActionResult Create()
         {
-            ViewData["ClienteId"] = new SelectList(_miDb.Clientes, "Id", "Apellido");
-            ViewData["VehiculoId"] = new SelectList(_miDb.Vehiculos, "Id", "Color");
+            ViewData["ClienteId"] = new SelectList(_miDb.Clientes, "Id", "NombreCompleto");
+            ViewData["VehiculoId"] = new SelectList(_miDb.Vehiculos, "Id", "Patente");
             return View();
         }
 
@@ -69,8 +69,8 @@ namespace EstacionamientoMVC.C.Controllers
                 await _miDb.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClienteId"] = new SelectList(_miDb.Clientes, "Id", "Apellido", clienteVehiculo.ClienteId);
-            ViewData["VehiculoId"] = new SelectList(_miDb.Vehiculos, "Id", "Color", clienteVehiculo.VehiculoId);
+            ViewData["ClienteId"] = new SelectList(_miDb.Clientes, "Id", " NombreCompleto", clienteVehiculo.ClienteId);
+            ViewData["VehiculoId"] = new SelectList(_miDb.Vehiculos, "Id", "Patente", clienteVehiculo.VehiculoId);
             return View(clienteVehiculo);
         }
 
@@ -87,8 +87,8 @@ namespace EstacionamientoMVC.C.Controllers
             {
                 return NotFound();
             }
-            ViewData["ClienteId"] = new SelectList(_miDb.Clientes, "Id", "Apellido", clienteVehiculo.ClienteId);
-            ViewData["VehiculoId"] = new SelectList(_miDb.Vehiculos, "Id", "Color", clienteVehiculo.VehiculoId);
+            ViewData["ClienteId"] = new SelectList(_miDb.Clientes, "Id", "NombreCompleto", clienteVehiculo.ClienteId);
+            ViewData["VehiculoId"] = new SelectList(_miDb.Vehiculos, "Id", "Patente", clienteVehiculo.VehiculoId);
             return View(clienteVehiculo);
         }
 
@@ -120,8 +120,8 @@ namespace EstacionamientoMVC.C.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClienteId"] = new SelectList(_miDb.Clientes, "Id", "Apellido", clienteVehiculo.ClienteId);
-            ViewData["VehiculoId"] = new SelectList(_miDb.Vehiculos, "Id", "Color", clienteVehiculo.VehiculoId);
+            ViewData["ClienteId"] = new SelectList(_miDb.Clientes, "Id", "NombreCompleto", clienteVehiculo.ClienteId);
+            ViewData["VehiculoId"] = new SelectList(_miDb.Vehiculos, "Id", "Patente", clienteVehiculo.VehiculoId);
             return View(clienteVehiculo);
         }
 
