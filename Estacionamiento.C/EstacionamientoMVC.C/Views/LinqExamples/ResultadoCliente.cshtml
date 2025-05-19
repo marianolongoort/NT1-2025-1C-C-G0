@@ -1,0 +1,40 @@
+﻿@model EstacionamientoMVC.C.Models.Cliente
+@{
+    ViewData["Title"] = "Resultado de Cliente";
+    string defaultId = ViewBag.IdEjemplo?.ToString() ?? "";
+    string defaultNombre = ViewBag.NombreBuscado?.ToString() ?? "";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<div class="alert alert-info">
+    <p><strong>Descripción:</strong> @ViewBag.Descripcion</p>
+    <p><strong>Expresión LINQ:</strong> <code>@ViewBag.LinqExpresion</code></p>
+    @if (!string.IsNullOrEmpty(defaultId))
+    {
+        <p><small>Buscando por Id: @defaultId</small></p>
+    }
+    @if (!string.IsNullOrEmpty(defaultNombre))
+    {
+        <p><small>Buscando por Nombre: @defaultNombre</small></p>
+    }
+</div>
+
+
+@if (Model != null)
+{
+    <h4>Cliente Encontrado:</h4>
+    <dl class="row">
+        <dt class="col-sm-3">Id:</dt>
+        <dd class="col-sm-9">@Model.Id</dd>
+        <dt class="col-sm-3">Nombre:</dt>
+        <dd class="col-sm-9">@Model.Nombre @Model.Apellido</dd>
+        <dt class="col-sm-3">Email:</dt>
+        <dd class="col-sm-9">@Model.Email</dd>
+    </dl>
+}
+else
+{
+    <div class="alert alert-danger">Cliente no encontrado.</div>
+}
+<p><a asp-action="Index" class="btn btn-secondary mt-3">Volver al menú</a></p>

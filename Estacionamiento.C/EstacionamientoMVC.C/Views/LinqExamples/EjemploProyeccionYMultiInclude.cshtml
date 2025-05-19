@@ -1,0 +1,48 @@
+﻿@model IEnumerable<EstacionamientoMVC.C.Controllers.VehiculoConPropietariosViewModel>
+@{
+    ViewData["Title"] = "Resultado Proyección y Múltiples Includes";
+}
+<h3>@ViewData["Title"]</h3>
+<hr />
+<div class="alert alert-info">
+    <p><strong>Descripción:</strong> @ViewBag.Descripcion</p>
+    <p><strong>Expresión LINQ:</strong> <code>@ViewBag.LinqExpresion</code></p>
+    <p><small>Buscando vehículos marca: @ViewBag.MarcaBuscada</small></p>
+</div>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var vehiculoInfo in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                Vehículo: @vehiculoInfo.MarcaColorVehiculo - Patente: @vehiculoInfo.Patente
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Propietarios Registrados:</h5>
+                @if (vehiculoInfo.Propietarios.Any())
+                {
+                    <ul>
+                        @foreach (var prop in vehiculoInfo.Propietarios)
+                        {
+                            <li>
+                                <strong>@prop.NombreCompleto</strong> (Email: @prop.Email, Codigo Postal: @prop.CodigoPostalCliente)
+                                <br />
+                                <small>Asignado el: @prop.FechaAsignacion.ToShortDateString()</small>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="card-text"><em>No tiene propietarios registrados en el sistema.</em></p>
+                }
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="alert alert-warning">No se encontraron vehículos de la marca "@ViewBag.MarcaBuscada" o no tienen propietarios asociados.</div>
+}
+<p><a asp-action="Index" class="btn btn-secondary mt-3">Volver al menú</a></p>

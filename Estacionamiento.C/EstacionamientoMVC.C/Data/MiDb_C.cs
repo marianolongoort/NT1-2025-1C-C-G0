@@ -18,7 +18,7 @@ namespace EstacionamientoMVC.C.Data
             #region Muchos a Muchos
             modelBuilder.Entity<ClienteVehiculo>().HasKey(cv => new { cv.ClienteId,cv.VehiculoId});
 
-            modelBuilder.Entity<ClienteVehiculo>().HasOne(cv => cv.Cliente).WithMany(clt => clt.ClientesVehiculos);
+            modelBuilder.Entity<ClienteVehiculo>().HasOne(cv => cv.Cliente).WithMany(clt => clt.ClienteVehiculos);
             modelBuilder.Entity<ClienteVehiculo>().HasOne(cv => cv.Vehiculo).WithMany(veh => veh.ClientesAutorizados);
 
             #endregion
@@ -29,8 +29,8 @@ namespace EstacionamientoMVC.C.Data
         public DbSet<Direccion> Direcciones { get; set; }
         public DbSet<Telefono> Telefonos { get; set; }
         public DbSet<Vehiculo> Vehiculos { get; set; }
-        public DbSet<EstacionamientoMVC.C.Models.Empleado> Empleado { get; set; }
-        public DbSet<EstacionamientoMVC.C.Models.ClienteVehiculo> ClienteVehiculo { get; set; }
+        public DbSet<EstacionamientoMVC.C.Models.Empleado> Empleados { get; set; }
+        public DbSet<EstacionamientoMVC.C.Models.ClienteVehiculo> ClienteVehiculos { get; set; }
 
 
 

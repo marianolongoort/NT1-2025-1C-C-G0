@@ -1,0 +1,55 @@
+﻿@model EstacionamientoMVC.C.Models.Cliente
+@{
+    ViewData["Title"] = "Resultado Cliente con Vehículos y Teléfonos (ThenInclude)";
+}
+<h3>@ViewData["Title"]</h3>
+<hr />
+<div class="alert alert-info">
+    <p><strong>Descripción:</strong> @ViewBag.Descripcion</p>
+    <p><strong>Expresión LINQ:</strong> <code>@ViewBag.LinqExpresion</code></p>
+    <p><small>Cliente ID: @ViewBag.IdEjemplo</small></p>
+</div>
+
+@if (Model != null)
+{
+    <h4>Cliente: @Model.Nombre @Model.Apellido (ID: @Model.Id)</h4>
+
+    <h5>Teléfonos:</h5>
+    @if (Model.Telefonos != null && Model.Telefonos.Any())
+    {
+        <ul>
+            @foreach (var tel in Model.Telefonos)
+            {
+                <li>@tel.Tipo: @tel.Numero</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p><em>Sin teléfonos registrados.</em></p>
+    }
+
+    <h5>Vehículos Asignados:</h5>
+    @if (Model.ClienteVehiculos != null && Model.ClienteVehiculos.Any())
+    {
+        <ul>
+            @foreach (var cv in Model.ClienteVehiculos)
+            {
+                <li>
+                    <strong>@cv.Vehiculo.Marca @cv.Vehiculo.Color</strong> (@cv.Vehiculo.AnioFabricacion) - Patente: @cv.Vehiculo.Patente
+                    <br />
+                    <small>Asignado el: @cv.FechaAsignacion.ToShortDateString()</small>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p><em>Este cliente no tiene vehículos asignados.</em></p>
+    }
+}
+else
+{
+    <div class="alert alert-warning">Cliente no encontrado.</div>
+}
+<p><a asp-action="Index" class="btn btn-secondary mt-3">Volver al menú</a></p>

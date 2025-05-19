@@ -19,14 +19,14 @@ namespace EstacionamientoMVC.C.Controllers
             _miDb = context;
         }
 
-        // GET: ClientesVehiculos
+        // GET: ClienteVehiculos
         public async Task<IActionResult> Index()
         {
-            var miDb_C = _miDb.ClienteVehiculo.Include(c => c.Cliente).Include(c => c.Vehiculo);
+            var miDb_C = _miDb.ClienteVehiculos.Include(c => c.Cliente).Include(c => c.Vehiculo);
             return View(await miDb_C.ToListAsync());
         }
 
-        // GET: ClientesVehiculos/Details/5
+        // GET: ClienteVehiculos/Details/5
         public async Task<IActionResult> Details(int? clienteId,int? vehiculoId)
         {
             if (clienteId is null || vehiculoId is null)
@@ -34,7 +34,7 @@ namespace EstacionamientoMVC.C.Controllers
                 return NotFound();
             }
 
-            var clienteVehiculo = await _miDb.ClienteVehiculo
+            var clienteVehiculo = await _miDb.ClienteVehiculos
                 .Include(c => c.Cliente)
                 .Include(c => c.Vehiculo)
                 .FirstOrDefaultAsync(m => m.ClienteId == clienteId && m.VehiculoId == vehiculoId);
@@ -48,7 +48,7 @@ namespace EstacionamientoMVC.C.Controllers
             return View(clienteVehiculo);
         }
 
-        // GET: ClientesVehiculos/Create
+        // GET: ClienteVehiculos/Create
         public IActionResult Create()
         {
             ViewData["ClienteId"] = new SelectList(_miDb.Clientes, "Id", "NombreCompleto");
@@ -56,7 +56,7 @@ namespace EstacionamientoMVC.C.Controllers
             return View();
         }
 
-        // POST: ClientesVehiculos/Create
+        // POST: ClienteVehiculos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -74,7 +74,7 @@ namespace EstacionamientoMVC.C.Controllers
             return View(clienteVehiculo);
         }
 
-        // GET: ClientesVehiculos/Edit/5
+        // GET: ClienteVehiculos/Edit/5
         public async Task<IActionResult> Edit(int? clienteid,int? vehiculoid)
         {
             if (clienteid == null || vehiculoid == null)
@@ -82,7 +82,7 @@ namespace EstacionamientoMVC.C.Controllers
                 return NotFound();
             }
 
-            var clienteVehiculo = await _miDb.ClienteVehiculo.FindAsync(clienteid,vehiculoid);
+            var clienteVehiculo = await _miDb.ClienteVehiculos.FindAsync(clienteid,vehiculoid);
             if (clienteVehiculo == null)
             {
                 return NotFound();
@@ -92,7 +92,7 @@ namespace EstacionamientoMVC.C.Controllers
             return View(clienteVehiculo);
         }
 
-        // POST: ClientesVehiculos/Edit/5
+        // POST: ClienteVehiculos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -125,7 +125,7 @@ namespace EstacionamientoMVC.C.Controllers
             return View(clienteVehiculo);
         }
 
-        // GET: ClientesVehiculos/Delete/5
+        // GET: ClienteVehiculos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,7 +133,7 @@ namespace EstacionamientoMVC.C.Controllers
                 return NotFound();
             }
 
-            var clienteVehiculo = await _miDb.ClienteVehiculo
+            var clienteVehiculo = await _miDb.ClienteVehiculos
                 .Include(c => c.Cliente)
                 .Include(c => c.Vehiculo)
                 .FirstOrDefaultAsync(m => m.ClienteId == id);
@@ -145,15 +145,15 @@ namespace EstacionamientoMVC.C.Controllers
             return View(clienteVehiculo);
         }
 
-        // POST: ClientesVehiculos/Delete/5
+        // POST: ClienteVehiculos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var clienteVehiculo = await _miDb.ClienteVehiculo.FindAsync(id);
+            var clienteVehiculo = await _miDb.ClienteVehiculos.FindAsync(id);
             if (clienteVehiculo != null)
             {
-                _miDb.ClienteVehiculo.Remove(clienteVehiculo);
+                _miDb.ClienteVehiculos.Remove(clienteVehiculo);
             }
 
             await _miDb.SaveChangesAsync();
@@ -162,7 +162,7 @@ namespace EstacionamientoMVC.C.Controllers
 
         private bool ClienteVehiculoExists(int id)
         {
-            return _miDb.ClienteVehiculo.Any(e => e.ClienteId == id);
+            return _miDb.ClienteVehiculos.Any(e => e.ClienteId == id);
         }
     }
 }

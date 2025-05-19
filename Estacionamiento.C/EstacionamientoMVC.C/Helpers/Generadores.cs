@@ -14,7 +14,8 @@ namespace EstacionamientoMVC.C.Helpers
 
         public static string GetNewCodigoEmpleado(int largo)
         {
-            return GetRand(caracteres,largo);
+            var resu = GetRand(caracteres, largo);
+            return resu;
         }
 
         private static string GetRand(string caracteres,int largo)
@@ -32,7 +33,13 @@ namespace EstacionamientoMVC.C.Helpers
             return random.Next(Configs.MinAnioVehiculo,Configs.MaxAnioVehiculo);
         }
 
-
-
+        public static DateTime ObtenerFechaRandom()
+        {
+            Random random = new Random();
+            int dias = random.Next(0, 3650); // 10 años * 365 días
+            return DateTime.Today.AddDays(-dias);
+        }
     }
+
+
 }

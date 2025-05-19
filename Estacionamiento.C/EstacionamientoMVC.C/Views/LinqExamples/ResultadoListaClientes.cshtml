@@ -1,0 +1,44 @@
+﻿@model IEnumerable< EstacionamientoMVC.C.Models.Cliente>
+@{
+    ViewData["Title"] = "Resultado de Lista de Clientes";
+}
+<h3>@ViewData["Title"]</h3>
+<hr />
+<div class="alert alert-info">
+    <p><strong>Descripción:</strong> @ViewBag.Descripcion</p>
+    <p><strong>Expresión LINQ:</strong> <code>@ViewBag.LinqExpresion</code></p>
+    @if (ViewBag.ApellidoBuscado != null)
+    {
+        <p><small>Filtrando por Apellido: @ViewBag.ApellidoBuscado</small></p>
+    }
+</div>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cliente in Model)
+            {
+                <tr>
+                    <td>@cliente.Id</td>
+                    <td>@cliente.Nombre</td>
+                    <td>@cliente.Apellido</td>
+                    <td>@cliente.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">No se encontraron clientes que cumplan el criterio.</div>
+}
+<p><a asp-action="Index" class="btn btn-secondary mt-3">Volver al menú</a></p>

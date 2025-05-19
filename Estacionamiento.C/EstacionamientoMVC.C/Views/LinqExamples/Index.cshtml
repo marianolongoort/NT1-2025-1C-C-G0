@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Ejemplos de LINQ";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p>Selecciona un ejemplo para ver su funcionamiento y el código LINQ utilizado.</p>
+
+<div class="list-group">
+    <a asp-action="EjemploFind" asp-route-id="1" class="list-group-item list-group-item-action bg-info">1. FindAsync (Cliente Id: 1)</a>
+    <a asp-action="EjemploFind" asp-route-id="99" class="list-group-item list-group-item-action bg-info">1. FindAsync (Cliente Id: 99 - No existente)</a>
+    <a asp-action="EjemploFirstOrDefault" asp-route-nombreBuscado="Marge" class="list-group-item list-group-item-action bg-info">2. FirstOrDefaultAsync (Nombre: "Marge")</a>
+    <a asp-action="EjemploFirstOrDefault" asp-route-nombreBuscado="Inexistente" class="list-group-item list-group-item-action bg-info">2. FirstOrDefaultAsync (Nombre: "Inexistente")</a>
+    <a asp-action="EjemploWhere" asp-route-apellidoBuscado="Perez" class="list-group-item list-group-item-action bg-primary text-white">3. Where (Apellido: "Perez")</a>
+    <a asp-action="EjemploOrderBy" class="list-group-item list-group-item-action bg-dark text-white">4. OrderBy / ThenBy (Empleados)</a>
+    <a asp-action="EjemploGroupBy" class="list-group-item list-group-item-action bg-secondary text-white">5. GroupBy (Clientes por Ciudad)</a>
+    <a asp-action="EjemploInclude" asp-route-clienteId="2" class="list-group-item list-group-item-action bg-success text-white">6. Include (Cliente Id: 2 con su Dirección)</a>
+    <a asp-action="EjemploThenInclude" asp-route-clienteId="1" class="list-group-item list-group-item-action bg-success text-white">7. ThenInclude (Cliente Id: 1 con sus Vehículos y Teléfonos)</a>
+    <a asp-action="EjemploProyeccionYMultiInclude" asp-route-marcaVehiculo="Toyota" class="list-group-item list-group-item-action bg-danger text-white">8. Proyección y Múltiples Includes (Vehículos Toyota y sus dueños)</a>
+</div>

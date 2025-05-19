@@ -1,0 +1,42 @@
+﻿@model IEnumerable<EstacionamientoMVC.C.Models.Empleado>
+@{
+    ViewData["Title"] = "Resultado de Lista de Empleados";
+}
+<h3>@ViewData["Title"]</h3>
+<hr />
+<div class="alert alert-info">
+    <p><strong>Descripción:</strong> @ViewBag.Descripcion</p>
+    <p><strong>Expresión LINQ:</strong> <code>@ViewBag.LinqExpresion</code></p>
+</div>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>CodigoEmpleado</th>
+                <th>Fecha Contratación</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var empleado in Model)
+            {
+                <tr>
+                    <td>@empleado.Id</td>
+                    <td>@empleado.Nombre</td>
+                    <td>@empleado.Apellido</td>
+                    <td>@empleado.CodigoEmpleado</td>
+                    <td>@empleado.Fecha.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">No se encontraron empleados.</div>
+}
+<p><a asp-action="Index" class="btn btn-secondary mt-3">Volver al menú</a></p>

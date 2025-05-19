@@ -1,0 +1,40 @@
+﻿@model IEnumerable<EstacionamientoMVC.C.Controllers.LinqExamplesController.ClientesPorCodigoPostalViewModel>
+@{
+    ViewData["Title"] = "Resultado de GroupBy (Clientes por Codigo Postal)";
+}
+<h3>@ViewData["Title"]</h3>
+<hr />
+<div class="alert alert-info">
+    <p><strong>Descripción:</strong> @ViewBag.Descripcion</p>
+    <p><strong>Expresión LINQ:</strong> <code>@ViewBag.LinqExpresion</code></p>
+</div>
+
+@if (Model != null && Model.Any())
+{
+    foreach (var grupo in Model)
+    {
+        <h4>CodigoPostal: @grupo.CodigoPostal (@grupo.CantidadClientes cliente(s))</h4>
+        <table class="table table-sm table-bordered mb-4">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre Completo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cliente in grupo.Clientes)
+                {
+                    <tr>
+                        <td>@cliente.Id</td>
+                        <td>@cliente.Nombre @cliente.Apellido</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+else
+{
+<div class="alert alert-warning">No hay datos para agrupar o los clientes no tienen direcciones/CodigoPostal asignados.</div>
+}
+<p><a asp-action="Index" class="btn btn-secondary mt-3">Volver al menú</a></p>

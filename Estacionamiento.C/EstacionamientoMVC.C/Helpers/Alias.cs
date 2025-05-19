@@ -11,7 +11,7 @@ namespace EstacionamientoMVC.C.Helpers
         public const string Email = "Correo electrónico";
         public const string ClienteId = "Cliente";
         public const string Cliente = "Cliente";
-        public const string EmpleadoId = "Empleado";
+        public const string EmpleadoId = "Empleados";
         public const string VehiculoId = "Vehiculo";
         public const string Anio = "Año";
         public const string RolName = "Nombre";

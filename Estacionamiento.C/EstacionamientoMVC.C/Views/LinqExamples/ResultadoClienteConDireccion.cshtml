@@ -1,0 +1,38 @@
+﻿@model EstacionamientoMVC.C.Models.Cliente
+@{
+    ViewData["Title"] = "Resultado Cliente con Dirección (Include)";
+}
+<h3>@ViewData["Title"]</h3>
+<hr />
+<div class="alert alert-info">
+    <p><strong>Descripción:</strong> @ViewBag.Descripcion</p>
+    <p><strong>Expresión LINQ:</strong> <code>@ViewBag.LinqExpresion</code></p>
+    <p><small>Cliente ID: @ViewBag.IdEjemplo</small></p>
+</div>
+
+@if (Model != null)
+{
+    <h4>Cliente: @Model.Nombre @Model.Apellido</h4>
+    <dl class="row">
+        <dt class="col-sm-3">Id:</dt>
+        <dd class="col-sm-9">@Model.Id</dd>
+        <dt class="col-sm-3">Email:</dt>
+        <dd class="col-sm-9">@Model.Email</dd>
+        <dt class="col-sm-3">Dirección:</dt>
+        @if (Model.Direccion != null)
+        {
+            <dd class="col-sm-9">
+                @Model.Direccion.DireccionCompleta
+            </dd>
+        }
+        else
+        {
+            <dd class="col-sm-9 text-danger"><em>Sin dirección asignada</em></dd>
+        }
+    </dl>
+}
+else
+{
+    <div class="alert alert-warning">Cliente no encontrado.</div>
+}
+<p><a asp-action="Index" class="btn btn-secondary mt-3">Volver al menú</a></p>

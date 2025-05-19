@@ -9,11 +9,19 @@ using System.Threading.Tasks;
 namespace EstacionamientoMVC.C.Models
 {
     public class Empleado : Persona
-    {
+    {        
+
         [Required(ErrorMessage = ErrMsgs.Requerido)]
         [StringLength(Restrictiones.CeilL1, MinimumLength = Restrictiones.FloorL4, ErrorMessage = ErrMsgs.FixedSize)]
         public string CodigoEmpleado { get; set; } = Generadores.GetNewCodigoEmpleado(Restrictiones.CeilL1);
 
+
+        [Display(Name = "Fecha Contratación")]
+        [DataType(DataType.Date)]
+        public override DateTime Fecha {
+            get { return base.Fecha; }
+            set {base.Fecha = value; } 
+        }
 
     }
 }

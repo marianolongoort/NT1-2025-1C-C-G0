@@ -22,7 +22,7 @@ namespace EstacionamientoMVC.C.Controllers
         // GET: Empleados
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Empleado.ToListAsync());
+            return View(await _context.Empleados.ToListAsync());
         }
 
         // GET: Empleados/Details/5
@@ -33,7 +33,7 @@ namespace EstacionamientoMVC.C.Controllers
                 return NotFound();
             }
 
-            var empleado = await _context.Empleado
+            var empleado = await _context.Empleados
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (empleado == null)
             {
@@ -73,7 +73,7 @@ namespace EstacionamientoMVC.C.Controllers
                 return NotFound();
             }
 
-            var empleado = await _context.Empleado.FindAsync(id);
+            var empleado = await _context.Empleados.FindAsync(id);
             if (empleado == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace EstacionamientoMVC.C.Controllers
                 return NotFound();
             }
 
-            var empleado = await _context.Empleado
+            var empleado = await _context.Empleados
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (empleado == null)
             {
@@ -139,10 +139,10 @@ namespace EstacionamientoMVC.C.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var empleado = await _context.Empleado.FindAsync(id);
+            var empleado = await _context.Empleados.FindAsync(id);
             if (empleado != null)
             {
-                _context.Empleado.Remove(empleado);
+                _context.Empleados.Remove(empleado);
             }
 
             await _context.SaveChangesAsync();
@@ -151,7 +151,7 @@ namespace EstacionamientoMVC.C.Controllers
 
         private bool EmpleadoExists(int id)
         {
-            return _context.Empleado.Any(e => e.Id == id);
+            return _context.Empleados.Any(e => e.Id == id);
         }
     }
 }
