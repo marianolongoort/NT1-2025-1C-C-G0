@@ -1,8 +1,8 @@
 ﻿@model EstacionamientoMVC.C.Models.Cliente
 @{
     ViewData["Title"] = "Resultado de Cliente";
-    string defaultId = ViewBag.IdEjemplo?.ToString() ?? "";
-    string defaultNombre = ViewBag.NombreBuscado?.ToString() ?? "";
+    string defaultId = ViewBag.IdEjemplo?.ToString() ?? string.Empty;
+    string defaultNombre = ViewBag.NombreBuscado?.ToString() ?? string.Empty;
 }
 
 <h3>@ViewData["Title"]</h3>

@@ -19,13 +19,11 @@ namespace EstacionamientoMVC.C.Controllers
             _context = context;
         }
 
-        // GET: Clientes
         public async Task<IActionResult> Index()
         {
             return View(await _context.Clientes.ToListAsync());
         }
 
-        // GET: Clientes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,25 +41,11 @@ namespace EstacionamientoMVC.C.Controllers
             return View(cliente);
         }
 
-        // GET: Clientes/Create
         public IActionResult Create()
         {
-            Cliente cliente = new Cliente()
-            {
-                Apellido = "Picapiedra",
-                Nombre = "Pedro",
-                DNI = 22333444,
-                Email = "pedro@ort.edu.ar",
-                Activo = true,
-                CodigoIdentificacion = "30-22333444-0"
-            };
-
-            return View(cliente);
+            return View();
         }
 
-        // POST: Clientes/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,Foto,DNI,CodigoIdentificacion,Email,Activo")] Cliente cliente)
@@ -70,12 +54,12 @@ namespace EstacionamientoMVC.C.Controllers
             {
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                return RedirectToAction("Create","Direcciones",new { clienteid = cliente.Id});
             }
             return View(cliente);
         }
 
-        // GET: Clientes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -91,9 +75,6 @@ namespace EstacionamientoMVC.C.Controllers
             return View(cliente);
         }
 
-        // POST: Clientes/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Foto,DNI,CodigoIdentificacion,Email,Activo")] Cliente cliente)
@@ -126,7 +107,6 @@ namespace EstacionamientoMVC.C.Controllers
             return View(cliente);
         }
 
-        // GET: Clientes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -144,7 +124,6 @@ namespace EstacionamientoMVC.C.Controllers
             return View(cliente);
         }
 
-        // POST: Clientes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

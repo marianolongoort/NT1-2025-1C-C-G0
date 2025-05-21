@@ -43,33 +43,29 @@ namespace EstacionamientoMVC.C.Controllers
             return View(direccion);
         }
 
-        public IActionResult Create()
+        public IActionResult Create(string clienteid)
         {
-            Direccion dir = new Direccion() { 
-                Calle = "Charcas",
-                Numero = 2345,
-                CodigoPostal = "C1414ASD",
-                Departamento = "A",
-                Piso = 9
-            };
+            ViewBag.Clienteid = clienteid;
 
             ViewData["Id"]= new SelectList(_miDb.Clientes, "Id", "NombreCompleto");         
-
-
-            return View(dir);
+            return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Calle,Numero,Piso,Departamento,CodigoPostal")] Direccion direccion)
+        public async Task<IActionResult> Create([Bind("Id,Calle,Numero,Piso,Departamento,CodigoPostal,ClienteId")] Direccion direccion)
         {
             if (ModelState.IsValid)
             {
                 _miDb.Add(direccion);
                 await _miDb.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
             ViewData["Id"] = new SelectList(_miDb.Clientes, "Id", "NombreCompleto", direccion.Id);
+
+            //ModelState.AddModelError(string.Empty,"Algun otro error");
+            //ModelState.AddModelError("CodigoPostal", "Un error diferente en codpos");
+
             return View(direccion);
         }
 
