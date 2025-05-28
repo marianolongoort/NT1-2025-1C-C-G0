@@ -75,11 +75,25 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="btn btn-primary btn-sm" >Acceso</a>
-                        </li>
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-primary btn-sm" asp-action="IniciarSesion" asp-controller="Account">Acceso</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-primary btn-sm" asp-action="Registrar" asp-controller="Account">Registrarse</a>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <span>@User.Identity.Name</span>
+                            <li class="nav-item">
+                                <a class="btn btn-primary btn-sm" asp-action="CerrarSesion" asp-controller="Account">Cerrar</a>
+                            </li>
+                        }
                     </ul>
-                </div>
+                    </div>
             </div>
         </nav>
     </header>

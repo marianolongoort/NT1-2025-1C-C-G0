@@ -11,6 +11,7 @@ namespace EstacionamientoMVC.C.Models
         public int Id { get; set; }
         
         [Required(ErrorMessage = ErrMsgs.Requerido)]
+        [StringLength(50)]
         public string Calle { get; set; }
         
         [Required(ErrorMessage = ErrMsgs.Requerido)]

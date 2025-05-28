@@ -1,12 +1,13 @@
 ﻿using EstacionamientoMVC.C.Helpers;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace EstacionamientoMVC.C.Models
 {
-    public class Persona
+    public class Persona : IdentityUser<int>
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         [Required(ErrorMessage = ErrMsgs.Requerido)]
         [StringLength(Restrictiones.CeilL3, MinimumLength = Restrictiones.FloorL1, ErrorMessage = ErrMsgs.StrMaxMin)]
         public string Nombre { get; set; }
@@ -15,6 +16,15 @@ namespace EstacionamientoMVC.C.Models
         [Required(ErrorMessage = ErrMsgs.Requerido)]
         [MaxLength(Restrictiones.CeilL3, ErrorMessage = ErrMsgs.StrMax)]
         public string Apellido { get; set; }
+
+
+        [Display(Name = "Correo electronico")]
+        [DataType(DataType.EmailAddress)]
+        public override string Email
+        {
+            get { return base.Email; }
+            set { base.Email = value; }
+        }
 
         public string NombreCompleto
         {
@@ -40,12 +50,6 @@ namespace EstacionamientoMVC.C.Models
 
         //Prop Navegacional
         public Direccion Direccion { get; set; }
-
-
-        [Display(Name = "Correo electronico")]
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
-
         public bool Activo { get; set; } = true;
 
         public virtual DateTime Fecha { get; set; }  = DateTime.Now;

@@ -25,8 +25,9 @@ namespace EstacionamientoMVC.C.Models
 
 
         public Cliente Cliente { get; set; }
-
-        public decimal Monto { get; private set; }
+        
+        //[Precision(18,2)]
+        public decimal Monto { get; set; }
 
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd HH:mm}")]
